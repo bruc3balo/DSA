@@ -155,7 +155,7 @@ class TwoSum {
 }
 
 
-class SelectionSort {
+class Sort {
     public static void main(String[] args) {
         
         int[] nums = new int[]{64,25,12,22,11,64};
@@ -168,36 +168,9 @@ class SelectionSort {
         //edge cases
         //sort
         //selection sort
-       for(int i = 0; i < nums.length - 1; i++) {
-           //set current element as min
-           int min = i;
-          
-          //check element to be min amongs others
-          for(int j = i + 1; j < nums.length; j++) {
-              int c = nums[j];
-              
-              //if find another min change pointer
-              if(c < nums[min]) {
-                  min = j;
-              }
-          }
-          
-          //if min has changed swap elements    
-          if (min != i) {
-               System.out.print("\n Swapping "+nums[i] + " for "+nums[min] +" ,,, ");
-              int temp = nums[i];
-              nums[i] = nums[min];
-              nums[min] = temp;
-              
-                 System.out.print("\n Swapped "+nums[i] + " for "+nums[min] + " \n");
-          }
-          
-          for (int b : nums) {
-           System.out.print("Step "+i + ":  "+b +" \n");
-        }
-          
-        }   
-        
+
+        //selectionSort(nums);
+
         System.out.print("\n ");
         
         
@@ -220,4 +193,61 @@ class SelectionSort {
         System.out.print("\n Not found");
         
     }
+
+
+    public static int[] selectionSort (int[] nums) {
+        for(int i = 0; i < nums.length - 1; i++) {
+            //set current element as min
+            int min = i;
+           
+           //check element to be min amongs others
+           for(int j = i + 1; j < nums.length; j++) {
+               int c = nums[j];
+               
+               //if find another min change pointer
+               if(c < nums[min]) {
+                   min = j;
+               }
+           }
+           
+           //if min has changed swap elements    
+           if (min != i) {
+                System.out.print("\n Swapping "+nums[i] + " for "+nums[min] +" ,,, ");
+               int temp = nums[i];
+               nums[i] = nums[min];
+               nums[min] = temp;
+               
+                  System.out.print("\n Swapped "+nums[i] + " for "+nums[min] + " \n");
+           }
+           
+           for (int b : nums) {
+            System.out.print("Step "+i + ":  "+b +" \n");
+         }
+           
+         }   
+        return nums; 
+    }
+
+    public static int[] insertionSort (int[] nums ) {
+        for(int i = 1; i < nums.length; i++) {
+            //set the key / current element
+            int key = nums[i];
+            int j = i - 1;
+             
+           //if left is bigger than right shift
+           while (j >= 0 && nums[j] > key) {
+               //shift to the right
+               nums[j + 1] = nums[j];
+               j--;
+           }
+             
+             
+           //set left to be the key
+           nums[j + 1] = key;
+       }
+           
+    
+       return nums;
+    }
+
 }
